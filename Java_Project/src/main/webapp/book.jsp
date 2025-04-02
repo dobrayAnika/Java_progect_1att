@@ -14,24 +14,7 @@
   </style>
 </head>
 <body>
-<h2>Список пользователей</h2>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Имя</th>
-    <th>Email</th>
-  </tr>
-  <%
-    List<User> users = (List<User>) request.getAttribute("users");
-    for (User user : users) {
-  %>
-  <tr>
-    <td><%= user.getId() %></td>
-    <td><%= user.getName() %></td>
-    <td><%= user.getEmail() %></td>
-  </tr>
-  <% } %>
-</table>
+
 
 <h2>Список прочитанных книг</h2>
 <table>
