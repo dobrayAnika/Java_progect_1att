@@ -5,7 +5,7 @@
 <%@ page import="java.awt.print.Book" %>
 <html>
 <head>
-  <title>Ферма - Пользователи и Животные</title>
+  <title>Книжный сайт</title>
   <style>
     body { font-family: Arial, sans-serif; }
     table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
@@ -33,13 +33,13 @@
   <% } %>
 </table>
 
-<h2>Список животных</h2>
+<h2>Список прочитанных книг</h2>
 <table>
   <tr>
     <th>ID</th>
-    <th>Вид</th>
-    <th>Имя</th>
-    <th>ID владельца</th>
+    <th>Id пользователя</th>
+    <th>Id книги</th>
+    <th>Название</th>
   </tr>
   <%
     List<BookRead> bookReads = (List<BookRead>) request.getAttribute("books");

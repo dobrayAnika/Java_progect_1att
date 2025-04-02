@@ -22,6 +22,6 @@ public class BookReadServlet extends HttpServlet {
         request.setAttribute("users", users);
         request.setAttribute("books", books);
 
-        request.getRequestDispatcher("Book.jsp").forward(request, response);
+        request.getRequestDispatcher("book.jsp").forward(request, response);
     }
 }

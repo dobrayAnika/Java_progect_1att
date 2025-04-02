@@ -1,5 +1,7 @@
 package com.book.servlets;
 
+import com.book.dao.BookReadDAO;
+import com.book.model.BookRead;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,16 +18,10 @@ import java.util.List;
 
 public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
         List<User> users = UserDAO.getUsers();
 
-        System.out.println("Пользователи получены: " + users);
-        String json = new Gson().toJson(users);
+        request.setAttribute("users", users);
 
-        PrintWriter out = response.getWriter();
-        out.print(json);
-        out.flush();
+        request.getRequestDispatcher("users.jsp").forward(request, response);
     }
 }
