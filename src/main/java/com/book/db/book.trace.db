@@ -1,0 +1,13 @@
+2025-03-19 13:36:23.340163+03:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO Users (name, email) VALUES (?, ?) [42104-224]
+2025-03-19 13:36:23.345684+03:00 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO Users (name, email) VALUES (?, ?) [42104-224]
+2025-03-19 13:36:23.352190+03:00 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+SELECT * FROM Users [42104-224]
+2025-04-02 13:47:53.636396+03:00 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "READBOOKS" не найдена
+Table "READBOOKS" not found; SQL statement:
+INSERT INTO ReadBooks (user_id, book_id, book_title) VALUES (?, ?, ?) [42102-224]
