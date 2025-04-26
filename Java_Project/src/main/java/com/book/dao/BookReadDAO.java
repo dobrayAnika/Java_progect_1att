@@ -31,4 +31,10 @@ public class BookReadDAO {
         String sql = "SELECT * FROM ReadBooks";
         return dbExecutor.query(sql, BookReadExtractor::extract);
     }
+
+    public void deleteBookRead(int id) {
+        String sql = "DELETE FROM ReadBooks WHERE id = ?";
+        dbExecutor.update(sql, id);
+        System.out.println("Удалена запись о прочитанной книге, ID: " + id);
+    }
 }

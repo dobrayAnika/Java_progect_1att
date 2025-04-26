@@ -12,14 +12,11 @@ public class Main {
         BookReadService bookReadService = BookReadService.getInstance();
         BookService bookService = BookService.getInstance();
 
-        //userService.addUser("Маша", "masha@example.com");
-        //userService.addUser("Петя", "petya@example.com");
 
-        //bookReadService.addReadBook(2, 2, "Синий дракон");
 
         // Добавляем книги
-        bookService.addBook("Война и мир");
-        bookService.addBook("Преступление и наказание");
+        //bookService.addBook("Война и мир");
+        //bookService.addBook("Преступление и наказание");
 
         // Выводим пользователей
         System.out.println("Users:");

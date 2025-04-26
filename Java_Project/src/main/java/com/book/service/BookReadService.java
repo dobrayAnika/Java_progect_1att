@@ -20,11 +20,19 @@ public class BookReadService {
         return instance;
     }
 
+    public void addBookRead(int userId, int bookId, String title) {
+        bookReadDAO.addBookRead(userId, bookId, title);
+    }
+
     public void addReadBook(int userId, int bookId, String title) {
         bookReadDAO.addBookRead(userId, bookId, title);
     }
 
     public List<BookRead> getAllReadBooks() {
         return bookReadDAO.getReadBooks();
+    }
+
+    public void deleteBookRead(int id) {
+        bookReadDAO.deleteBookRead(id);
     }
 }
