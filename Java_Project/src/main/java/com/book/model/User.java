@@ -1,5 +1,5 @@
 package com.book.model;
- //здесь создаем юзеров для того чтобы выводить значения и заполнять таблицы
+
 public class User {
     private int id;
     private String name;

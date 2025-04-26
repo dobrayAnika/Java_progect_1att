@@ -21,6 +21,6 @@ public class DatabaseConnection {
             System.err.println("Ошибка SQL: " + e.getMessage());
             e.printStackTrace();
         }
-        return null;  // Если ошибка, вернуть null
+        return null;
     }
 }
