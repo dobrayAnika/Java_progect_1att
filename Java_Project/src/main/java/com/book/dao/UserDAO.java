@@ -7,28 +7,20 @@ import com.book.model.User;
 import java.util.List;
 
 public class UserDAO {
+    private final DbExecutor dbExecutor;
 
-    public static void addUser(String name, String email) {
+    public UserDAO(DbExecutor dbExecutor) {
+        this.dbExecutor = dbExecutor;
+    }
+
+    public void addUser(String name, String email) {
         String sql = "INSERT INTO Users (name, email) VALUES (?, ?)";
-        DbExecutor.update(sql, name, email);
+        dbExecutor.update(sql, name, email);
         System.out.println("Пользователь добавлен: " + name);
     }
 
-    public static List<User> getUsers() {
+    public List<User> getUsers() {
         String sql = "SELECT * FROM Users";
-        return DbExecutor.query(sql, UserExtractor::extract);
+        return dbExecutor.query(sql, UserExtractor::extract);
     }
-
-    public static void printUsers() {
-        List<User> users = getUsers();
-        if (users.isEmpty()) {
-            System.out.println("В базе нет пользователей.");
-        } else {
-            users.forEach(user ->
-                    System.out.println("ID: " + user.getId() +
-                            ", Name: " + user.getName() +
-                            ", Email: " + user.getEmail()));
-        }
-    }
-
 }

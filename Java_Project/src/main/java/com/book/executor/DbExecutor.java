@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public class DbExecutor {
 
-    public static <T> List<T> query(String sql, Function<ResultSet, T> extractor, Object... params) {
+    public <T> List<T> query(String sql, Function<ResultSet, T> extractor, Object... params) {
         List<T> result = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -33,7 +33,7 @@ public class DbExecutor {
         return result;
     }
 
-    public static void update(String sql, Object... params) {
+    public void update(String sql, Object... params) {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 

@@ -6,12 +6,17 @@ import com.book.model.User;
 import java.util.List;
 
 public class UserService {
+    private final UserDAO userDAO;
+
+    public UserService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
     public void addUser(String name, String email) {
-        // Здесь можно добавить валидации
-        UserDAO.addUser(name, email);
+        userDAO.addUser(name, email);
     }
 
     public List<User> getAllUsers() {
-        return UserDAO.getUsers();
+        return userDAO.getUsers();
     }
 }

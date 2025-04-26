@@ -7,15 +7,20 @@ import com.book.model.BookRead;
 import java.util.List;
 
 public class BookReadDAO {
+    private final DbExecutor dbExecutor;
 
-    public static void addBookRead(int userId, int bookId, String bookTitle) {
+    public BookReadDAO(DbExecutor dbExecutor) {
+        this.dbExecutor = dbExecutor;
+    }
+
+    public void addBookRead(int userId, int bookId, String bookTitle) {
         String sql = "INSERT INTO ReadBooks (user_id, book_id, book_title) VALUES (?, ?, ?)";
-        DbExecutor.update(sql, userId, bookId, bookTitle);
+        dbExecutor.update(sql, userId, bookId, bookTitle);
         System.out.println("Добавлена прочитанная книга: " + bookTitle);
     }
 
-    public static List<BookRead> getReadBooks() {
+    public List<BookRead> getReadBooks() {
         String sql = "SELECT * FROM ReadBooks";
-        return DbExecutor.query(sql, BookReadExtractor::extract);
+        return dbExecutor.query(sql, BookReadExtractor::extract);
     }
 }
