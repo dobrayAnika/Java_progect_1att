@@ -6,10 +6,18 @@ import com.book.model.User;
 import java.util.List;
 
 public class UserService {
+    private static UserService instance;
     private final UserDAO userDAO;
 
-    public UserService(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    private UserService() {
+        this.userDAO = UserDAO.getInstance();
+    }
+
+    public static UserService getInstance() {
+        if (instance == null) {
+            instance = new UserService();
+        }
+        return instance;
     }
 
     public void addUser(String name, String email) {

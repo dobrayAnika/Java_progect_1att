@@ -7,10 +7,18 @@ import com.book.model.User;
 import java.util.List;
 
 public class UserDAO {
+    private static UserDAO instance;
     private final DbExecutor dbExecutor;
 
-    public UserDAO(DbExecutor dbExecutor) {
-        this.dbExecutor = dbExecutor;
+    private UserDAO() {
+        this.dbExecutor = DbExecutor.getInstance();
+    }
+
+    public static UserDAO getInstance() {
+        if (instance == null) {
+            instance = new UserDAO();
+        }
+        return instance;
     }
 
     public void addUser(String name, String email) {

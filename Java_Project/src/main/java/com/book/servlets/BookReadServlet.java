@@ -1,8 +1,5 @@
 package com.book.servlets;
 
-import com.book.dao.BookReadDAO;
-import com.book.dao.UserDAO;
-import com.book.executor.DbExecutor;
 import com.book.model.BookRead;
 import com.book.model.User;
 import com.book.service.BookReadService;
@@ -17,17 +14,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class BookReadServlet extends HttpServlet {
-    private final UserService userService;
-    private final BookReadService bookService;
-
-    public BookReadServlet() {
-        DbExecutor dbExecutor = new DbExecutor();
-        UserDAO userDAO = new UserDAO(dbExecutor);
-        BookReadDAO bookReadDAO = new BookReadDAO(dbExecutor);
-
-        this.userService = new UserService(userDAO);
-        this.bookService = new BookReadService(bookReadDAO);
-    }
+    private final UserService userService = UserService.getInstance();
+    private final BookReadService bookService = BookReadService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

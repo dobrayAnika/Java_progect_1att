@@ -1,13 +1,23 @@
 package com.book.executor;
 
 import com.book.db.DatabaseConnection;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
 public class DbExecutor {
+    private static DbExecutor instance;
+
+    private DbExecutor() {
+    }
+
+    public static DbExecutor getInstance() {
+        if (instance == null) {
+            instance = new DbExecutor();
+        }
+        return instance;
+    }
 
     public <T> List<T> query(String sql, Function<ResultSet, T> extractor, Object... params) {
         List<T> result = new ArrayList<>();

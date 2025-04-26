@@ -7,10 +7,18 @@ import com.book.model.BookRead;
 import java.util.List;
 
 public class BookReadDAO {
+    private static BookReadDAO instance;
     private final DbExecutor dbExecutor;
 
-    public BookReadDAO(DbExecutor dbExecutor) {
-        this.dbExecutor = dbExecutor;
+    private BookReadDAO() {
+        this.dbExecutor = DbExecutor.getInstance();
+    }
+
+    public static BookReadDAO getInstance() {
+        if (instance == null) {
+            instance = new BookReadDAO();
+        }
+        return instance;
     }
 
     public void addBookRead(int userId, int bookId, String bookTitle) {

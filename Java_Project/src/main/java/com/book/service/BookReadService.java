@@ -6,10 +6,18 @@ import com.book.model.BookRead;
 import java.util.List;
 
 public class BookReadService {
+    private static BookReadService instance;
     private final BookReadDAO bookReadDAO;
 
-    public BookReadService(BookReadDAO bookReadDAO) {
-        this.bookReadDAO = bookReadDAO;
+    private BookReadService() {
+        this.bookReadDAO = BookReadDAO.getInstance();
+    }
+
+    public static BookReadService getInstance() {
+        if (instance == null) {
+            instance = new BookReadService();
+        }
+        return instance;
     }
 
     public void addReadBook(int userId, int bookId, String title) {
