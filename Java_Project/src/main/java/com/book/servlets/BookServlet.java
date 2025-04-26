@@ -22,4 +22,29 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("books", books);
         request.getRequestDispatcher("books.jsp").forward(request, response);
     }
+
+    // BookServlet.java
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // Обработка добавления книги
+        String title = request.getParameter("title");
+        if (title != null && !title.isEmpty()) {
+            bookService.addBook(title);
+        }
+
+        // Обработка удаления книги
+        String deleteId = request.getParameter("deleteId");
+        if (deleteId != null && !deleteId.isEmpty()) {
+            try {
+                int id = Integer.parseInt(deleteId);
+                bookService.deleteBook(id);
+            } catch (NumberFormatException e) {
+                System.err.println("Неверный ID для удаления: " + deleteId);
+            }
+        }
+
+        response.sendRedirect("books");
+    }
 }

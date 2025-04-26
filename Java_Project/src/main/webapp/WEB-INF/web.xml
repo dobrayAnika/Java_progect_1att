@@ -6,20 +6,19 @@
          version="3.0">
 
   <servlet>
-    <servlet-name>HelloServlet</servlet-name>
+    <servlet-name>MainServlet</servlet-name>
     <servlet-class>com.book.servlets.MainServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/index</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>com.book.servlets.UserServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/users</url-pattern>
@@ -29,21 +28,21 @@
     <servlet-name>BookReadServlet</servlet-name>
     <servlet-class>com.book.servlets.BookReadServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>BookReadServlet</servlet-name>
     <url-pattern>/read_books</url-pattern>
   </servlet-mapping>
 
-  <!-- Новый сервлет для отображения всех книг -->
   <servlet>
     <servlet-name>BookServlet</servlet-name>
     <servlet-class>com.book.servlets.BookServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>BookServlet</servlet-name>
     <url-pattern>/books</url-pattern>
   </servlet-mapping>
 
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>

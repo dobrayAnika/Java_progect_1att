@@ -27,4 +27,8 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookDAO.getAllBooks();
     }
+
+    public void deleteBook(int id) {
+        bookDAO.deleteBook(id);
+    }
 }

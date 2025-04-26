@@ -3,37 +3,47 @@
 <%@ page import="com.book.model.User" %>
 <html>
 <head>
-    <title>Книжный сайт</title>
+    <title>Пользователи</title>
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #f2f2f2; }
-        form { margin-bottom: 20px; }
-        input[type="text"], input[type="email"] { padding: 5px; margin-right: 10px; }
-        input[type="submit"] { padding: 5px 10px; }
+        .home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .home-button:hover {
+            background-color: #0b7dda;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+<h2>Пользователи</h2>
 
-<h2>Добавить пользователя</h2>
-<form action="users" method="post">
-    <input type="text" name="name" placeholder="Имя" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="submit" value="Добавить">
-</form>
+<div class="form-container">
+    <form action="users" method="post">
+        <input type="text" name="name" placeholder="Имя" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="submit" value="Добавить">
+    </form>
+</div>
 
-<h2>Список пользователей</h2>
 <table>
     <tr>
         <th>ID</th>
         <th>Имя</th>
         <th>Email</th>
     </tr>
-    <%
-        List<User> users = (List<User>) request.getAttribute("users");
-        for (User user : users) {
-    %>
+    <% for (User user : (List<User>)request.getAttribute("users")) { %>
     <tr>
         <td><%= user.getId() %></td>
         <td><%= user.getName() %></td>
@@ -42,5 +52,6 @@
     <% } %>
 </table>
 
+<a href="index" class="home-button">Вернуться на главную</a>
 </body>
 </html>
