@@ -26,7 +26,14 @@ public class DatabaseInitializer {
                     "FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE" +
                     ");";
 
-            // Выполнение SQL-запросов
+            // Создание таблицы всех книг
+            String createBooksTable = "CREATE TABLE IF NOT EXISTS Books (" +
+                    "id INT PRIMARY KEY AUTO_INCREMENT, " +
+                    "title VARCHAR(255) NOT NULL" +
+                    ");";
+
+// Выполнение SQL-запросов
+            statement.executeUpdate(createBooksTable);
             statement.executeUpdate(createUsersTable);
             statement.executeUpdate(createReadBooksTable);
 

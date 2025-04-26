@@ -1,7 +1,6 @@
 package com.book.servlets;
 
 import com.book.service.UserService;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +15,23 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Получаем список пользователей и передаем в запрос
         request.setAttribute("users", userService.getAllUsers());
         request.getRequestDispatcher("users.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+
+        // Добавляем нового пользователя, если данные получены
+        if (name != null && email != null) {
+            userService.addUser(name, email);
+        }
+
+        // После добавления пользователя — перенаправляем обратно на страницу списка пользователей
+        response.sendRedirect("users");
     }
 }
