@@ -37,4 +37,10 @@ public class BookDAO {
         dbExecutor.update(sql, id);
         System.out.println("Книга удалена, ID: " + id);
     }
+
+    public List<Book> findByTitle(String title) {
+        String sql = "SELECT * FROM Books WHERE title LIKE ?";
+        return dbExecutor.query(sql, BookExtractor::extract, "%" + title + "%");
+    }
+
 }

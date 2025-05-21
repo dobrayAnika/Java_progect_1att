@@ -31,4 +31,11 @@ public class UserDAO {
         String sql = "SELECT * FROM Users";
         return dbExecutor.query(sql, UserExtractor::extract);
     }
+
+    public List<User> findByName(String name) {
+        String sql = "SELECT * FROM Users WHERE name LIKE ?";
+        return dbExecutor.query(sql, UserExtractor::extract, "%" + name + "%");
+    }
+
+
 }

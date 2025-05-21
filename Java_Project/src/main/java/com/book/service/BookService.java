@@ -31,4 +31,9 @@ public class BookService {
     public void deleteBook(int id) {
         bookDAO.deleteBook(id);
     }
+
+    public List<Book> findByTitle(String title) {
+        return bookDAO.findByTitle(title);
+    }
+
 }

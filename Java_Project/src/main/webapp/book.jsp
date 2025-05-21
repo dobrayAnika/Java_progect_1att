@@ -29,6 +29,13 @@
       padding-bottom: 10px;
       border-bottom: 2px solid #3498db;
     }
+    input.form-control {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
     .form-container {
       background: #f8f9fa;
       padding: 20px;
@@ -127,6 +134,23 @@
 <body>
 <div class="container">
   <h2>Прочитанные книги</h2>
+
+  <form action="read_books" method="get" class="form-container">
+    <h3 class="form-title">Поиск</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="searchUser">Пользователь:</label>
+        <input type="text" id="searchUser" name="searchUser" value="<%= request.getAttribute("searchUser") %>" class="form-control" placeholder="Введите имя пользователя">
+      </div>
+      <div class="form-group">
+        <label for="searchBook">Книга:</label>
+        <input type="text" id="searchBook" name="searchBook" value="<%= request.getAttribute("searchBook") %>" class="form-control" placeholder="Введите название книги">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Найти</button>
+      </div>
+    </div>
+  </form>
 
   <div class="form-container">
     <h3 class="form-title">Добавить новую запись</h3>

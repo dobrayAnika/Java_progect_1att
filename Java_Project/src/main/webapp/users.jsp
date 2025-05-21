@@ -92,6 +92,7 @@
 <div class="container">
     <h2>Пользователи</h2>
 
+    <!-- Форма добавления -->
     <div class="form-container">
         <form action="users" method="post">
             <input type="text" name="name" placeholder="Имя" required>
@@ -100,6 +101,15 @@
         </form>
     </div>
 
+    <!-- Форма поиска -->
+    <div class="form-container">
+        <form action="users" method="get">
+            <input type="text" name="search" placeholder="Поиск по имени">
+            <input type="submit" value="Искать">
+        </form>
+    </div>
+
+    <!-- Таблица -->
     <table>
         <tr>
             <th>ID</th>

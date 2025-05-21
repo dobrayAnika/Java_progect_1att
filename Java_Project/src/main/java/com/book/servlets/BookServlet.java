@@ -18,23 +18,28 @@ public class BookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Book> books = bookService.getAllBooks();
+        String search = request.getParameter("search");
+        List<Book> books;
+
+        if (search != null && !search.isEmpty()) {
+            books = bookService.findByTitle(search);
+        } else {
+            books = bookService.getAllBooks();
+        }
+
         request.setAttribute("books", books);
         request.getRequestDispatcher("books.jsp").forward(request, response);
     }
 
-    // BookServlet.java
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Обработка добавления книги
         String title = request.getParameter("title");
         if (title != null && !title.isEmpty()) {
             bookService.addBook(title);
         }
 
-        // Обработка удаления книги
         String deleteId = request.getParameter("deleteId");
         if (deleteId != null && !deleteId.isEmpty()) {
             try {

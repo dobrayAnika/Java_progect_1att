@@ -5,6 +5,7 @@
 <head>
   <title>Книги</title>
   <style>
+    /* Стили оставлены без изменений */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -37,6 +38,7 @@
       display: flex;
       gap: 15px;
       align-items: flex-end;
+      margin-bottom: 10px;
     }
     .form-group {
       flex: 1;
@@ -73,15 +75,9 @@
     .btn-danger {
       background-color: #e74c3c;
       color: white;
-      border: none;
       padding: 10px 15px;
       border-radius: 4px;
       font-size: 14px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .btn-danger:hover {
-      background-color: #c0392b;
     }
     .btn-home {
       background-color: #2ecc71;
@@ -102,19 +98,14 @@
     }
     th, td {
       padding: 12px 15px;
-      text-align: left;
       border-bottom: 1px solid #ddd;
     }
     th {
       background-color: #3498db;
       color: white;
-      font-weight: 600;
     }
     tr:hover {
       background-color: #f5f5f5;
-    }
-    .actions {
-      white-space: nowrap;
     }
   </style>
 </head>
@@ -122,6 +113,7 @@
 <div class="container">
   <h2>Книги</h2>
 
+  <!-- Форма добавления -->
   <div class="form-container">
     <form action="books" method="post">
       <div class="form-row">
@@ -136,12 +128,28 @@
     </form>
   </div>
 
+  <!-- Форма поиска -->
+  <div class="form-container">
+    <form action="books" method="get">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="search">Поиск по названию:</label>
+          <input type="text" id="search" name="search" placeholder="Введите часть названия">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Искать</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Таблица книг -->
   <table>
     <thead>
     <tr>
       <th>ID</th>
       <th>Название</th>
-      <th class="actions">Действия</th>
+      <th>Действия</th>
     </tr>
     </thead>
     <tbody>
@@ -149,8 +157,8 @@
     <tr>
       <td><%= book.getId() %></td>
       <td><%= book.getTitle() %></td>
-      <td class="actions">
-        <form action="books" method="post" style="display: inline;">
+      <td>
+        <form action="books" method="post" style="display:inline;">
           <input type="hidden" name="deleteId" value="<%= book.getId() %>">
           <button type="submit" class="btn-danger">Удалить</button>
         </form>
